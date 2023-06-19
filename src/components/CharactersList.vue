@@ -26,6 +26,7 @@ export default {
     name:'CharactersList',
     data(){
         return {
+            apiUrl: 'https://rickandmortyapi.com/api/character',
             charactersList : [],
             store
         }
@@ -36,13 +37,13 @@ export default {
     },
 
     created(){
-        axios.get('https://rickandmortyapi.com/api/character')
+        axios.get(this.apiUrl)
         .then( (response) => {
             console.log(response.data.results);
             setTimeout( () => {
                 this.charactersList = response.data.results;
                 this.store.isLoading = false;
-            }, 5000);
+            }, 3000);
         })
         .catch(function (error) {
             console.log(error);
