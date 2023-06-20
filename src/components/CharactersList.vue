@@ -19,36 +19,24 @@
 <script>
 import CharacterCard from './CharacterCard.vue';
 import AnimatedLoader from './AnimatedLoader.vue';
-import axios from 'axios';
 import { store } from '../store.js';
+
 
 export default {
     name:'CharactersList',
     data(){
         return {
-            apiUrl: 'https://rickandmortyapi.com/api/character',
-            charactersList : [],
             store
         }
+    },
+    props:{
+        charactersList : Array,
     },
     components:{
         CharacterCard,
         AnimatedLoader
     },
 
-    created(){
-        axios.get(this.apiUrl)
-        .then( (response) => {
-            console.log(response.data.results);
-            setTimeout( () => {
-                this.charactersList = response.data.results;
-                this.store.isLoading = false;
-            }, 3000);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-    }
 }
 </script>
 
