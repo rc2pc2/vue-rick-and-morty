@@ -9,8 +9,7 @@
 import CharactersList from './CharactersList.vue';
 import CharacterSearchbar from './CharacterSearchbar.vue';
 
-//import axios from 'axios', ES6 alternative below;
-const axios = require('axios');
+import axios from 'axios'
 
 import { store } from '../store.js';
 
